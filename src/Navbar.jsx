@@ -8,6 +8,11 @@ function Navbar() {
           <Link to="/">Home</Link>
           <Link to="/travel-modes">Travel Modes</Link>
           <Link to="/fare-estimator">Fare Estimator</Link>
+          <Link to="/comparison">Journey Comparison</Link>
+          <Link to="/planner">Journey Planner</Link>
+          <Link to="/updates">Live Updates</Link>
+          <Link to="/nearby-stops">Nearby Stops</Link>
+          <Link to="/bike-hire">Bike Hire</Link>
       </div>
     </nav>
   );

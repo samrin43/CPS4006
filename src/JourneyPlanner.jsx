@@ -1,46 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { getJourney } from "./api";
 
 function JourneyPlanner() {
-  const [start, setStart] = useState("");
-  const [destination, setDestination] = useState("");
-  const [results, setResults] = useState("");
-  const journeys = [
-    {
-        start: "Campus",
-        destination: "City Center",
-        route: "Take Bus 12 - 20 mins",
-    },
-    {
-        start: "Campus",
-        destination: "Train station",
-        route: "Walk then Rail - 15 mins",
-    },
-    {
-        start: "Library",
-        destination: "Shopping Mall",
-        route: "Cycle Route A - 10 mins",
-    },
-
-  ];
-  useEffect(() => {
-    const savedStart = localStorage.getItem("start");
-    const savedDestination = localStorage.getItem("destination");
-    if (savedStart) setStart(savedStart);
-    if (savedDestination) setDestination(savedDestination);
-  }, []);
-
-  const findJourney = (e) => {
-    localStorage.setItem("start", start);
-    localStorage.setItem("destination", destination);
-    const match = journeys.find(
-        (journey) =>
-        journey.start.toLowerCase() === start.toLowerCase() &&
-        journey.destination.toLowerCase() === destination.toLowerCase()
-    );
-    if (match) {
-        setResults(match.route);
-    } else {
-        setResults("No route found.");
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+  const [journeys, setJourneys] = useState([]);
+  const planjourneys = async () => {
+    try {
+      const data = await getJourney(from, to);
+      setJourneys(data.journeys);
+    } catch (error) {
+      console.error( error);
     }
   };
   return (
@@ -49,17 +19,22 @@ function JourneyPlanner() {
       <input
         type="text"
         placeholder="Starting Location"
-        value={start}
-        onChange={(e) => setStart(e.target.value)}
+        value={from}
+        onChange={(e) => setFrom(e.target.value)}
         />
         <input
           type="text"
           placeholder="Destination"
-          value={destination}
-          onChange={(e) => setDestination(e.target.value)}
+          value={to}
+          onChange={(e) => setTo(e.target.value)}
         />
-        <button onClick={findJourney}>Find Journey</button>
-        <h2>{results}</h2>
+        <button onClick={planjourneys}>Plan Journey</button>
+        {journeys.map((journey, index) => (
+          <div className="card">
+            <h2>Duration: {journey.duration} mins</h2>
+            <p> Arrival Time:{""} {journey.arrivalDateTime}</p>
+          </div>
+        ))}
     </div>
   );
 }
