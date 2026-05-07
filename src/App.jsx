@@ -6,7 +6,8 @@ import FareEstimator from "./FareEstimator.jsx";
 import NotFound from "./NotFound.jsx";
 
 function App() {
-  return (
+  return <h1>It works</h1>
+  (
     <div>
       <Navbar />
       <Routes>
