@@ -50,13 +50,11 @@ button {
   .navbar {
     flex-direction: column;
   }
-
   input,
   select,
   button {
     width: 100%;
   }
-  
 }
 
 .comparison-container {

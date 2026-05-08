@@ -1,14 +1,14 @@
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./Navbar.jsx";
-import Home from "./Home.jsx";
-import TravelModes from "./TravelModes.jsx";
-import FareEstimator from "./FareEstimator.jsx";
-import JourneyComparison from "./JourneyComparison.jsx";
-import JourneyPlanner from "./JourneyPlanner.jsx";
-import NotFound from "./NotFound.jsx";
-import LiveUpdates from "./LiveUpdates.jsx";
-import NearbyStops from "./NearbyStops.jsx";
-import BikeHire from "./BikeHire.jsx";
+import Navbar from "./Navbar";
+import Home from "./Home";
+import TravelModes from "./TravelModes";
+import FareEstimator from "./FareEstimator";
+import JourneyComparison from "./JourneyComparison";
+import JourneyPlanner from "./JourneyPlanner";
+import NotFound from "./NotFound";
+import LiveUpdates from "./LiveUpdates";
+import NearbyStops from "./NearbyStops";
+
 
 function App() {
   return <h1>It works</h1>
